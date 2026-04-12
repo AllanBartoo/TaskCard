@@ -3,58 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Task Card | HNG 14</title>
+    <title>Todo Card</title>
   </head>
   <body>
-    <article class="task-container" data-testid="test-todo-card">
-      <h2 class="task-title" data-testid="test-todo-title">
-        Welcome to hng 14
-      </h2>
+    <article data-testid="test-todo-card" aria-label="Todo item">
+      <div class="task-header">
+        <span data-testid="test-todo-priority" aria-label="High priority">
+          High
+        </span>
 
-      <p class="task-description" data-testid="test-todo-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ut
-        quos saepe sequi natus. Delectus officiis consequuntur nostrum
-        reprehenderit. Aliquam officia ratione distinctio quia doloremque
-        ducimus qui, inventore accusamus deserunt.
+        <span
+          class="badge badge--status badge--status-pending"
+          data-testid="test-todo-status"
+          aria-label="Status: Pending"
+          id="todo-status-badge"
+        >
+          Pending
+        </span>
+      </div>
+
+      <h2 id="task-title" data-testid="test-todo-title">Finish Frontend Wizards Task</h2>
+
+      <p id="task-description" data-testid="test-todo-description">
+        Build a responsive and accessible todo card with proper test IDs.
       </p>
 
-      <span class="task-priority" data-testid="test-todo-priority">Low</span>
+      <div class="task-meta">
+        <time data-testid="test-todo-due-date" datetime="2026-04-01T18:00:00Z">
+          Due April 16, 2026
+        </time>
+        
+        <span
+          class="task-time-remaining task-time-remaining--overdue"
+          data-testid="test-todo-time-remaining"
+          aria-live="polite"
+          id="time-remaining"
+        >
+          Due in 3 days
+        </>
+      </div>
 
-      <time
-        class="task-due"
-        data-testid="test-todo-due-date"
-        datetime="2026-04-18"
-      >
-        Due April 18, 2026
-      </time>
-
-      <span class="task-remaining" data-testid="test-todo-time-remaining"
-        >Due in 2 days</span
-      >
-
-      <span class="task-pending" data-testid="test-todo-status">Pending</span>
-
-      <input
-        type="checkbox"
-        id="check"
-        data-testid="test-todo-complete-toggle"
-      />
-      <label for="check">Mark task as complete</label>
-
-      <ul class="task-labels" data-testid="test-todo-tags">
-        <li data-testid="test-todo-tag-fun">fun</li>
-        <li data-testid="test-todo-tag-work">work</li>
+      <ul class="task-tags" data-testid="test-todo-tags" aria-label="Tags">
+        <li data-testid="test-todo-tag-work">
+          <span>
+            work
+          </span>
+          </li>
+          <li data-testid="test-todo-tag-urgent">
+            <span>
+            urgent
+          </span>
+          </li>
       </ul>
 
-      <div class="task-cta">
-        <button class="task-cta_edit" data-testid="test-todo-edit-button">
-          Edit
-        </button>
-        <button class="task-cta_delete" data-testid="test-todo-delete-button">
-          Delete
-        </button>
+      <div class="task-footer">
+        <label class="task-checkbox">
+          <input
+            type="checkbox"
+            id="todo-complete"
+            data-testid="test-todo-complete-toggle"
+          />
+          <span class="task-checkbox__label">Mark as complete</span>
+        </label>
+
+        <div class="task-cta">
+          <button
+            class="btn btn--edit"
+            data-testid="test-todo-edit-button"
+            aria-label="Edit task"
+          >
+            Edit
+          </button>
+
+          <button
+            class="btn btn--delete"
+            data-testid="test-todo-delete-button"
+            aria-label="Delete task"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </article>
+
+    <script src="script.js"></script>
   </body>
 </html>
