@@ -1,7 +1,6 @@
 ## Overview
 
-Ticketify is a single-card todo item component built for the Frontend Wizards Stage 0 challenge. It focuses on three concerns: testability via `data-testid` attributes, accessibility to WCAG AA standard, and responsiveness from 320px to 1200px.
-
+Ticketify is a single-card todo item component built for the Frontend Wizards Stage 0 challenge. 
 ---
 
 ## Features
