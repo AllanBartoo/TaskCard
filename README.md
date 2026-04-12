@@ -1,6 +1,6 @@
 ## Overview
 
-Ticketify is a single-card todo item component built for the Frontend Wizards Stage 0 challenge. 
+Ticketify is a single-card todo item card for HNG 14 Frontend Challenge Stage 0 challenge. 
 ---
 
 ## Features
