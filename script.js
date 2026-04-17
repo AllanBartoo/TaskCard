@@ -20,7 +20,7 @@ const timeRemaining = document.getElementById("time-remaining");
 const overdueIndicator = document.getElementById("overdue-indicator");
 const dueDate = document.getElementById("due-date");
 
-const DUE_DATE = new Date("2026-04-17T23:59:00Z");
+let DUE_DATE = new Date("2026-04-17T23:59:00Z");
 let isDone = false;
 let todo = {};
 
@@ -86,7 +86,7 @@ function updateTimeRemaining() {
   timeRemaining.classList.add(`task-time-remaining--${urgency}`);
 
   const overdue = urgency === "overdue";
-  if (overdueIndicator) overdueIndicator.hidden = !overdue;
+  overdueIndicator.classList.toggle("visible", overdue);
   card.classList.toggle("is-overdue", overdue);
 }
 
@@ -94,19 +94,6 @@ checkbox.addEventListener("change", () => {
   const done = checkbox.checked;
   card.classList.toggle("is-complete", done);
   setStatus(done ? "Done" : "Pending");
-
-  if (isDone) {
-    timeRemaining.textContent = "Completed";
-    timeRemaining.classList.remove(
-      "task-time-remaining--overdue",
-      "task-time-remaining--urgent",
-      "task-time-remaining--ok",
-    );
-    timeRemaining.classList.add("task-time-remaining--done");
-
-    if (overdueIndicator) overdueIndicator.hidden = true;
-    card.classList.remove("is-overdue");
-  }
 });
 
 function setStatus(value) {
@@ -127,7 +114,7 @@ function setStatus(value) {
 
   card.classList.toggle("is-done", isDone);
 
-  updateTimeRemaining(); 
+  updateTimeRemaining();
 }
 
 expandBtn.addEventListener("click", () => {
@@ -161,8 +148,8 @@ saveBtn.addEventListener("click", () => {
   description.innerText = descriptionInput.value;
 
   if (dateInput.value) {
-    const date = new Date(dateInput.value);
-    const formatted = date.toLocaleDateString("en-US", {
+    DUE_DATE = new Date(dateInput.value + "T23:59:00Z");
+    const formatted = DUE_DATE.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -172,6 +159,7 @@ saveBtn.addEventListener("click", () => {
     dueDate.setAttribute("datetime", dateInput.value);
   }
 
+  resetDescriptionState();
   taskView.classList.remove("hidden");
   taskEdit.classList.add("hidden");
   updateExpandVisibility();

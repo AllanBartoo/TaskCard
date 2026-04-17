@@ -424,7 +424,7 @@ form {
 }
 
 .overdue-indicator {
-  display: inline-flex;
+  display: none;
   align-items: center;
   background: #7f1d1d;
   color: #fee2e2;
@@ -433,6 +433,10 @@ form {
   font-weight: 600;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-lg);
+}
+
+.overdue-indicator.visible {
+  display: inline-flex;
 }
 
 .is-done #task-title {
@@ -445,6 +449,14 @@ form {
 .is-done .task-tags li span {
   color: var(--color-text-muted);
   opacity: 0.6;
+}
+
+.is-overdue {
+  border-color: #ef4444;
+}
+
+.is-overdue time {
+  color: var(--color-danger);
 }
 
 .is-overdue #task-title {
